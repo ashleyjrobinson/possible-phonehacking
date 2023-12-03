@@ -173,7 +173,14 @@ local function OnHackDone(success)
             end
             PoliceCall()
         end
-        TaskPlayAnim(GetPlayerPed(-1), "cellphone@", "cellphone_text_in", 2.0, 8.0, -1, 54, Config.WiringTime, false, false, false)
+
+        local AnimDict = "cellphone@"
+        lib.requestAnimDict(AnimDict, 500)
+        local Prop = 'ch_prop_ch_phone_ing_01a'
+        lib.requestModel(Prop, 500)
+        local PropBone = 28422
+        AddPropToPlayer(Prop, PropBone, 0.0, -0.02, 0.0, 0.0, 0.0, 0.0)
+        TaskPlayAnim(GetPlayerPed(-1), AnimDict, "cellphone_text_in", 2.0, 8.0, -1, 54, Config.WiringTime, false, false, false)
 
         QBCore.Functions.Progressbar("wiring_bank_funds", Config.WiringProgressText, Config.WiringTime, false, true, {
             disableMouse = false,
