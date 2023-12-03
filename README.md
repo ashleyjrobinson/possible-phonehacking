@@ -71,6 +71,9 @@ create an item named phonehacker in your ox_inventory/data/items.lua
 
 I've place the inventory image within the img folder, take this imagae and put it in your qb-inventory or ox-inventory imagery folder. Then delete the img folder within here.
 
+## Dependencies
+mHacking
+
 ## Support:
 
 Join my Discord for support and roles.
