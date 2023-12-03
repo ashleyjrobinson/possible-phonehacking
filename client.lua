@@ -46,7 +46,7 @@ end
   
 
 function AnimMode()
-    Animation = true
+    local Player = PlayerPedId()
     local AnimDict = "amb@code_human_wander_texting_fat@male@base"
     lib.requestAnimDict(AnimDict, 500)
     local Prop = 'ch_prop_ch_phone_ing_01a'
