@@ -235,6 +235,7 @@ local function OnHackDone(success)
         end)
     else
         TriggerEvent('mhacking:hide')
+        ClearPedTasks(PlayerPedId())
         DestroyAllProps()
         if Config.NotifyType == 'ox_lib' then
             lib.notify({

@@ -2,6 +2,8 @@ Config = {}
 
 Config.Debug = true
 
+Config.PossibleGangLevels = true -- Set to true if you use Possible Gang Levels https://possible-scripts.tebex.io/category/2380705
+
 Config.MinimumPolice = 0 -- Minimum police online to be able to hack a peds phone
 Config.PoliceCallHackingChance = 100 -- Chance to call police when hacking a phone
 
@@ -46,4 +48,4 @@ Config.WiringTime = 7500 -- Time it takes to hack a phone 7000 = 7 seconds
 Config.WiringProgressText = 'Wiring Bank Funds..'
 
 Config.MinReward = 500 -- Minimum reward for hacking a phone
-Config.MaxReward = 2000 -- Maximum reward for hacking a phone
+Config.MaxReward = 1250 -- Maximum reward for hacking a phone
