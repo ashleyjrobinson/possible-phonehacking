@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/ashleyjrobinson/possible-phonehacking/compare/v1.0.0...v1.0.1) (2024-02-08)
+
+
+### Bug Fixes
+
+* :bug: Uncomment export ([3d5ee90](https://github.com/ashleyjrobinson/possible-phonehacking/commit/3d5ee90aa6f6fa775d142e9fb3873886fc5f2fbf))
+
 ## 1.0.0 (2024-02-08)
 
 
