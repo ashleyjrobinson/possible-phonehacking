@@ -1,6 +1,6 @@
 return {
     Debug = true,
-    Framework = "qb",
+    Framework = "qb", -- qb for qbcore and qbox or esx
     Police = {
         jobs = {
             "police"
