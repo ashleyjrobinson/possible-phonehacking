@@ -7,7 +7,7 @@ return {
         }
     },
     MinimumPolice = 0,
-    Dispatch = 'ps-dispatch', -- If using qb-dispatch otherwise add your export in client policeCall function
+    Dispatch = 'ps-dispatch', -- If using ps-dispatch otherwise add your export in client policeCall function
     PoliceCallHackingChance = 100,
     QBInventory = false, -- If using qb-inventory set this to true
     RequiredItem = 'phonehacker',
