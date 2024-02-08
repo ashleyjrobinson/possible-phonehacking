@@ -10,7 +10,7 @@ local maxWiringDistance = config.MaxDistanceFromPed
 
 local function policeCall()
     if config.Dispatch == "ps-dispatch" then
-        --  exports['ps-dispatch']:ATMHacking()
+         exports['ps-dispatch']:PhoneHacking()
     else
         -- Add your custom export here
     end
