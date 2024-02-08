@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/ashleyjrobinson/possible-phonehacking/compare/v1.0.1...v1.0.2) (2024-02-08)
+
+
+### Bug Fixes
+
+* :bug: Remove qbcore export ([dbfb327](https://github.com/ashleyjrobinson/possible-phonehacking/commit/dbfb3277213d94442a8f7be17db7b5e0f08a2790))
+
 ## [1.0.1](https://github.com/ashleyjrobinson/possible-phonehacking/compare/v1.0.0...v1.0.1) (2024-02-08)
 
 
