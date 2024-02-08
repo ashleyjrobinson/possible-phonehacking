@@ -25,7 +25,7 @@ end
 
 local pedOptions = {
     {
-        name = 'possible-phonehacking:client:hackPhone',
+        name = 'HackPhoneTarget',
         icon = 'fas fa-mobile-alt',
         label = locale('target_label'),
         distance = config.TargetDistance,
@@ -62,7 +62,7 @@ local pedOptions = {
 
 local qbTargetPedOptions = {
     {
-        name = 'possible-phonehacking:client:hackPhone',
+        name = 'HackPhoneTarget',
         event = 'possible-phonehacking:client:startHack',
         icon = 'fas fa-mobile-alt',
         label = locale('target_label'),
