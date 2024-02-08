@@ -1,0 +1,15 @@
+{
+    "target_label": "Hack Phone",
+    "hacking_progress_label": "Wiring Bank Funds..",
+    "hacking_signal_lost_title": "Signal Lost",
+    "hacking_signal_lost_description": "Hack cancelled - you have lost signal.",
+    "hacking_failed_title": "Authentication Failed",
+    "hacking_failed_description": "Service disrupted, failed to hack the phone.",
+    "hacking_no_police_title": "Police Required",
+    "hacking_no_police_description": "This pedestrian has already been hacked.",
+    "hacking_already_hacked_title": "Already Hacked",
+    "hacking_already_hacked_description": "This pedestrian has already been hacked.",
+    "hacking_hack_successful_title": "Wire Successful",
+    "hacking_hack_sucessful_description": "Your bank recieved funds $"
+}
+

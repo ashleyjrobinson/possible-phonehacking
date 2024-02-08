@@ -3,18 +3,22 @@ lua54 'yes'
 game 'gta5' 
 
 author 'Possible'
-description 'Possible Phone Hacking - Hack Civs Phones through Phoehackers. Qbox, QBCore, ox_inventory, qb_inventory, possible-gang-levels, qb-core, zdiscord'
+description 'Possible Phone Hacking - Phone Hacking for QBox, QBCore, ESX! Join my discord for support and more: https://discord.gg/pdhW56TGYN'
 version '1.0.0'
 
+shared_scripts {
+    'shared/*',
+    '@ox_lib/init.lua'
+}
+
 client_scripts {
-    'client.lua'
+    'client/*'
 }
 
 server_scripts {
-    'server.lua'
+    'server/*'
 }
 
-shared_scripts {
-	'@ox_lib/init.lua',
-	'config.lua'
+files {
+    'locales/*.json'
 }
