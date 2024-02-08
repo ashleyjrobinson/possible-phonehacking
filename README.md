@@ -3,7 +3,7 @@
 [Preview](https://youtu.be/ct1vAF8SyqM) //
 [Discord/ Support](https://discord.gg/Gnb2S7uAdG)
 
-## Dispatch
+## Dispatch (or easily add your own):
 
 Project Sloth Dispatch - https://github.com/Project-Sloth/ps-dispatch
 
@@ -71,8 +71,12 @@ create an item named phonehacker in your ox_inventory/data/items.lua
 
 I've place the inventory image within the img folder, take this imagae and put it in your qb-inventory or ox-inventory imagery folder. Then delete the img folder within here.
 
-## Dependencies
-mHacking
+## Compatibility:
+- QBCore
+- QBOX
+- ESX
+- mHacking
+- rpemotes or scully_emotemenu
 
 ## Buy Me a Coffee:
 
