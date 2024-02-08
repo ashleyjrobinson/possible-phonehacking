@@ -1,7 +1,6 @@
 lib.locale()
 local config = require('shared.config')
 
-local QBCore = exports['qb-core']:GetCoreObject()
 local ox_target = exports.ox_target
 local ox_inventory = exports.ox_inventory
 local hackedPeds = {}
