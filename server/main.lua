@@ -65,22 +65,17 @@ RegisterServerEvent('possible-phonehacking:server:giveReward', function(reward)
     
     TriggerClientEvent('ox_lib:notify', src, { title = locale('hacking_hack_successful_title'), description = locale('hacking_hack_sucessful_description') .. reward, position = config.NotifPosition, type = 'success' })
     
-        if config.PossibleTerritories and config.Framework == "qb" then
-            TriggerEvent('possible-phonehacking:server:rewardGangInfluence')
-        elseif config.PossibleTerritories and config.Framework == "esx" then
-            TriggerEvent('possible-phonehacking:server:rewardGangInfluence')
-        end 
+    if config.PossibleTerritories and config.Framework == "qb" then
+        TriggerEvent('possible-phonehacking:server:rewardGangInfluence')
+    elseif config.PossibleTerritories and config.Framework == "esx" then
+        TriggerEvent('possible-phonehacking:server:rewardGangInfluence')
+    end 
     
-        if config.PossibleGangLevel and config.Framework == "qb" then
-            local src = source
-            local Player = QBCore.Functions.GetPlayer(src)
-            local gangName = Player.PlayerData.gang.name
-            if gangName ~= "none" then
-                exports['possible-gang-levels']:AddGangXPForPlayer(src, gangName, 5) -- Replace with the amount of XP to give
-            end
-        elseif config.PossibleGangLevel and config.Framework == "esx" then
-            exports['possible-gang-levels']:AddGangXPForPlayer(src, gangName, 5) -- Replace with the amount of XP to give
-        end
+    if config.PossibleGangLevels and config.Framework == "qb" then
+        TriggerEvent('possible-phonehacking:server:rewardGangXP')
+    elseif config.PossibleGangLevels and config.Framework == "esx" then
+        TriggerEvent('possible-phonehacking:server:rewardGangXP')
+    end
 end)
 
 RegisterServerEvent('possible-phonehacking:server:rewardGangInfluence', function()
