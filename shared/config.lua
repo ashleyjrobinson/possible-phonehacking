@@ -16,9 +16,13 @@ return {
     TargetDistance = 2.5,
     TargetLabel = 'Hack Phone',
     MaxDistanceFromPed = 5.0,
-    Emotes = 'rpemotes', -- rpemotes or anything else for scully_emotemenu
-    PossibleTerritories = true, -- Integrates my paid territrory script - https://possible-scripts.tebex.io/package/6045013 set false if no likey
-    PossibleGangLevels = true, -- Integrates my paid gang level script - https://possible-scripts.tebex.io/package/6036883 set false if no likey
+    Emotes = 'scully_emotemenu', -- rpemotes or anything else for scully_emotemenu
+    PossibleTerritories = true,  -- Integrates my paid territrory script - https://possible-scripts.tebex.io/package/6045013 set false if no likey
+    TerritoriesInfluence = 10, -- Only relevant if PossibleTerritories is true
+    TerritoriesRewardItem = 'cash', -- Only relevant if PossibleTerritories is true
+    TerritoriesRewardAmount = 30, -- Only relevant if PossibleTerritories is true
+    PossibleGangLevels = true,  -- Integrates my paid gang level script - https://possible-scripts.tebex.io/package/6036883 set false if no likey
+    GangXPReward = 5, -- Only relevant if PossibleGangLevels is true
     MinReward = 500,
     MaxReward = 1250,
     NotifPosition = 'top'

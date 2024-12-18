@@ -50,13 +50,46 @@ RegisterServerEvent('possible-phonehacking:server:giveReward', function(reward)
     if config.Framework == "qb" then
         Player = QBCore.Functions.GetPlayer(src)
         Player.Functions.AddMoney('bank', reward)
+        if config.PossibleTerritories then
+            local gangID = Player.PlayerData.gang.name
+            local territoryName = exports['possible-territories']:GetPlayerTerritory(src)
+            if not territoryName then return end
+            local influence = config.TerritoriesInfluence -- Influence Gained Per hack
+            local rewardItem = config.TerritoriesRewardItem
+            local Amount = config.TerritoriesRewardAmount -- Amount added to stash per completion, regardless of who completes
+            exports['possible-territories']:AddItemToStash(territoryName, rewardItem, Amount)
+            exports['possible-territories']:UpdateInfluenceForGangInTerritory(territoryName, gangID, influence)
+        end
+        if config.PossibleGangLevels then
+            local gangName = Player.PlayerData.gang.name
+            print(gangName)
+            if gangName ~= "none" then
+                exports['possible-gang-levels']:AddGangXPForPlayer(src, gangName, config.GangXPReward)
+            end
+        end
     elseif config.Framework == "esx" then
         local xPlayer = ESX.GetPlayerFromId(src)
         xPlayer.addAccountMoney('bank', reward)
+        if config.PossibleTerritories then
+            local gangID = xPlayer.job.name
+
+            local territoryName = exports['possible-territories']:GetPlayerTerritory(source)
+            if not territoryName then return end
+    
+            local influence = config.TerritoriesInfluence -- Influence Gained Per hack
+            local rewardItem = config.TerritoriesRewardItem
+            local Amount = config.TerritoriesRewardAmount -- Amount added to stash per completion, regardless of who completes
+            exports['possible-territories']:AddItemToStash(territoryName, rewardItem, Amount)
+            exports['possible-territories']:UpdateInfluenceForGangInTerritory(territoryName, gangID, influence)
+        end
+        if config.PossibleGangLevels then
+            local gangName = xPlayer.job.name
+            exports['possible-gang-levels']:AddGangXPForPlayer(src, gangName, config.GangXPReward)
+        end
     end
 
     if config.QBInventory then
-        if Player.Functions.RemoveItem(Config.RequiredItem, 1) then
+        if Player.Functions.RemoveItem(config.RequiredItem, 1) then
             TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items['phonehacker'], "remove", 1)
         end
     else
@@ -64,65 +97,5 @@ RegisterServerEvent('possible-phonehacking:server:giveReward', function(reward)
     end
     
     TriggerClientEvent('ox_lib:notify', src, { title = locale('hacking_hack_successful_title'), description = locale('hacking_hack_sucessful_description') .. reward, position = config.NotifPosition, type = 'success' })
-    
-    if config.PossibleTerritories and config.Framework == "qb" then
-        TriggerEvent('possible-phonehacking:server:rewardGangInfluence')
-    elseif config.PossibleTerritories and config.Framework == "esx" then
-        TriggerEvent('possible-phonehacking:server:rewardGangInfluence')
-    end 
-    
-    if config.PossibleGangLevels and config.Framework == "qb" then
-        TriggerEvent('possible-phonehacking:server:rewardGangXP')
-    elseif config.PossibleGangLevels and config.Framework == "esx" then
-        TriggerEvent('possible-phonehacking:server:rewardGangXP')
-    end
+
 end)
-
-RegisterServerEvent('possible-phonehacking:server:rewardGangInfluence', function()
-    if config.Framework == "qb" then
-        local src = source
-        local player = QBCore.Functions.GetPlayer(src)
-        if not player then return end
-        local gangID = Player.PlayerData.gang.name
-        
-        local territoryName = exports['possible-territories']:GetPlayerTerritory(src)
-        if not territoryName then return end
-
-        local influence = 10 -- Influence Gained Per hack
-        local cashAmount = 30 -- Amount added to stash per completion, regardless of who completes
-        exports['possible-territories']:AddCashToSafe(territoryName, cashAmount)
-        exports['possible-territories']:UpdateInfluenceForGangInTerritory(territoryName, gangID, influence)
-    elseif config.Framework == "esx" then
-        local source = source
-        local xPlayer = ESX.GetPlayerFromId(source)
-        if not xPlayer then return end
-        local gangID = xPlayer.job.name
-
-        local territoryName = exports['possible-territories']:GetPlayerTerritory(source)
-        if not territoryName then return end
-
-        local influence = 10 -- Influence Gained Per hack
-        local cashAmount = 30 -- Amount added to stash per completion, regardless of who completes
-        exports['possible-territories']:AddCashToSafe(territoryName, cashAmount)
-        exports['possible-territories']:UpdateInfluenceForGangInTerritory(territoryName, gangID, influence)
-    end
-end) 
-
-RegisterServerEvent('possible-phonehacking:server:rewardGangXP', function()
-    if config.Framework == "qb" then
-        local src = source
-        local Player = QBCore.Functions.GetPlayer(src)
-        local gangName = Player.PlayerData.gang.name
-
-    if gangName ~= "none" then
-        exports['possible-gang-levels']:AddGangXPForPlayer(src, gangName, 5) -- Replace with the amount of XP to give
-    end
-    elseif config.Framework == "esx" then
-        local source = source
-        local xPlayer = ESX.GetPlayerFromId(source)
-        if not xPlayer then return end
-        local gangName = xPlayer.job.name
-
-        exports['possible-gang-levels']:AddGangXPForPlayer(src, gangName, 5) -- Replace with the amount of XP to give
-    end
-end) 
