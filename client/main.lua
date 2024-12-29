@@ -140,6 +140,7 @@ local function OnHackDone(success)
                 print(playerCoords)
             end
             if Distance > maxWiringDistance then
+                TriggerServerEvent('possible-phonehacking:server:removeRequiredItem')
                 lib.notify({
                     title = locale('hacking_signal_lost_title'),
                     description = locale('hacking_signal_lost_description'),
