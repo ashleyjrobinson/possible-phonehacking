@@ -162,6 +162,7 @@ local function OnHackDone(success)
                 end
             end
         else
+            TriggerServerEvent('possible-phonehacking:server:removeRequiredItem')
             TriggerEvent('mhacking:hide')
             if config.Emotes == 'rpemotes' then
                 exports["rpemotes"]:EmoteCancel(forceCancel)

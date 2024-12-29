@@ -41,6 +41,18 @@ RegisterServerEvent('possible-phonehacking:server:requestPoliceCount', function(
     TriggerClientEvent('possible-phonehacking:client:receivePoliceCount', source, policeCount)  -- Send police count to the client
 end)
 
+RegisterServerEvent('possible-phonehacking:server:removeRequiredItem', function()
+    local src = source
+    if config.QBInventory then
+        Player = QBCore.Functions.GetPlayer(src)
+        if Player.Functions.RemoveItem(config.RequiredItem, 1) then
+            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items[config.RequiredItem], "remove", 1)
+        end
+    else
+        ox_inventory:RemoveItem(src, config.RequiredItem, 1)
+    end
+end)
+
 RegisterServerEvent('possible-phonehacking:server:giveReward', function(reward)
     if config.Debug then
         print('Reward: ' .. reward)
