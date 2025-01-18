@@ -57,20 +57,15 @@ RegisterServerEvent('possible-phonehacking:server:giveReward', function(reward)
     if config.Debug then
         print('Reward: ' .. reward)
     end
+    
     local src = source
 
     if config.Framework == "qb" then
         Player = QBCore.Functions.GetPlayer(src)
         Player.Functions.AddMoney('bank', reward)
         if config.PossibleTerritories then
-            local gangID = Player.PlayerData.gang.name
-            local territoryName = exports['possible-territories']:GetPlayerTerritory(src)
-            if not territoryName then return end
-            local influence = config.TerritoriesInfluence -- Influence Gained Per hack
-            local rewardItem = config.TerritoriesRewardItem
-            local Amount = config.TerritoriesRewardAmount -- Amount added to stash per completion, regardless of who completes
-            exports['possible-territories']:AddItemToStash(territoryName, rewardItem, Amount)
-            exports['possible-territories']:UpdateInfluenceForGangInTerritory(territoryName, gangID, influence)
+            exports['possible-territories']:AddItemToStash(src, config.TerritoriesRewardItem, config.TerritoriesRewardAmount)
+            exports['possible-territories']:UpdateInfluenceForGangInTerritory(src, config.TerritoriesInfluence)
         end
         if config.PossibleGangLevels then
             local gangName = Player.PlayerData.gang.name
@@ -83,16 +78,8 @@ RegisterServerEvent('possible-phonehacking:server:giveReward', function(reward)
         local xPlayer = ESX.GetPlayerFromId(src)
         xPlayer.addAccountMoney('bank', reward)
         if config.PossibleTerritories then
-            local gangID = xPlayer.job.name
-
-            local territoryName = exports['possible-territories']:GetPlayerTerritory(source)
-            if not territoryName then return end
-    
-            local influence = config.TerritoriesInfluence -- Influence Gained Per hack
-            local rewardItem = config.TerritoriesRewardItem
-            local Amount = config.TerritoriesRewardAmount -- Amount added to stash per completion, regardless of who completes
-            exports['possible-territories']:AddItemToStash(territoryName, rewardItem, Amount)
-            exports['possible-territories']:UpdateInfluenceForGangInTerritory(territoryName, gangID, influence)
+            exports['possible-territories']:AddItemToStash(src, config.TerritoriesRewardItem, config.TerritoriesRewardAmount)
+            exports['possible-territories']:UpdateInfluenceForGangInTerritory(src, config.TerritoriesInfluence)
         end
         if config.PossibleGangLevels then
             local gangName = xPlayer.job.name
