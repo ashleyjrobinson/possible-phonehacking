@@ -63,13 +63,8 @@ RegisterServerEvent('possible-phonehacking:server:giveReward', function(reward)
     if config.Framework == "qb" then
         Player = QBCore.Functions.GetPlayer(src)
         Player.Functions.AddMoney('bank', reward)
-        if config.PossibleTerritories then
-            exports['possible-territories']:AddItemToStash(src, config.TerritoriesRewardItem, config.TerritoriesRewardAmount)
-            exports['possible-territories']:UpdateInfluenceForGangInTerritory(src, config.TerritoriesInfluence)
-        end
         if config.PossibleGangLevels then
             local gangName = Player.PlayerData.gang.name
-            print(gangName)
             if gangName ~= "none" then
                 exports['possible-gang-levels']:AddGangXPForPlayer(src, gangName, config.GangXPReward)
             end
@@ -77,19 +72,20 @@ RegisterServerEvent('possible-phonehacking:server:giveReward', function(reward)
     elseif config.Framework == "esx" then
         local xPlayer = ESX.GetPlayerFromId(src)
         xPlayer.addAccountMoney('bank', reward)
-        if config.PossibleTerritories then
-            exports['possible-territories']:AddItemToStash(src, config.TerritoriesRewardItem, config.TerritoriesRewardAmount)
-            exports['possible-territories']:UpdateInfluenceForGangInTerritory(src, config.TerritoriesInfluence)
-        end
         if config.PossibleGangLevels then
             local gangName = xPlayer.job.name
             exports['possible-gang-levels']:AddGangXPForPlayer(src, gangName, config.GangXPReward)
         end
     end
 
+    if config.PossibleTerritories then
+        exports['possible-territories']:AddItemToStash(src, config.TerritoriesRewardItem, config.TerritoriesRewardAmount)
+        exports['possible-territories']:UpdateInfluenceForGangInTerritory(src, config.TerritoriesInfluence)
+    end
+
     if config.QBInventory then
         if Player.Functions.RemoveItem(config.RequiredItem, 1) then
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items['phonehacker'], "remove", 1)
+            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items[config.RequiredItem], "remove", 1)
         end
     else
         ox_inventory:RemoveItem(src, config.RequiredItem, 1)
